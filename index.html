@@ -10,16 +10,16 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
     <link rel="stylesheet" type="text/css" href="P01_index.css">
     <style>
-        .carousel-item {
-      height: 300px;
-      background: linear-gradient(to right, #1e3c72, #2a5298);
-      color: white;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      padding: 20px;
+    .carousel-item {
+        height: 300px;
+        background: linear-gradient(to right, #1e3c72, #2a5298);
+        color: white;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 20px;
     }
 
     .barra-decorativa {
@@ -40,6 +40,9 @@
 
     .carousel-caption-custom {
       max-width: 800px;
+      padding: 2rem;
+      margin: 0 auto;
+      color: white;
     }
 
     .btn-custom {
@@ -53,6 +56,29 @@
 
     .carousel-indicators [data-bs-target] {
       background-color: white;
+    }
+
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .carousel-caption-custom {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    }
+
+    .carousel-item.active .carousel-caption-custom {
+      opacity: 1;
+      transform: translateY(0);
+      animation: fadeInUp 1s ease forwards;
     }
     </style>
 </head>
@@ -69,16 +95,31 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                        <a class="nav-link active" aria-current="page" href="#">NOSOTROS</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Features</a>
+                        <a class="nav-link" href="#">SERVICIOS</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Pricing</a>
+                        <a class="nav-link" href="#">PORTAFOLIO</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+                        <a class="nav-link" href="#">HABILIDADES</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">CONTACTANOS</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="d-flex">
+                <ul class="navbar-nav">
+                    <li class="nav-item nav-item d-flex align-items-center">
+                        <img src="icono-telefono.png" alt="icono-telefono" height="20px" class="me-2">
+                        <a class="nav-link" href="#">(33)1540 1850</a>
+                    </li>
+                    <li class="nav-item nav-item d-flex align-items-center">
+                        <img src="icono-telefono.png" alt="icono-telefono" height="20px" class="me-2">
+                        <a class="nav-link" href="#">(33)2258 6823</a>
                     </li>
                 </ul>
             </div>
@@ -86,49 +127,92 @@
     </nav>
     <!--Carrusel-->
     <div id="carouselTexto" class="carousel slide" data-bs-ride="carousel">
+        <!-- Indicadores -->
         <div class="carousel-indicators">
-            <button type="button" data-bs-target="#carouselTexto" data-bs-slide-to="0" class="active" aria-current="true"></button>
-            <button type="button" data-bs-target="#carouselTexto" data-bs-slide-to="1"></button>
-            <button type="button" data-bs-target="#carouselTexto" data-bs-slide-to="2"></button>
+            <button type="button" data-bs-target="#carouselTexto" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselTexto" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselTexto" data-bs-slide-to="2" aria-label="Slide 3"></button>
         </div>
+        <!-- Slides -->
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <div class="carousel-caption-custom">
-                    <div class="titulo-lineas">
-                        <div class="barra-decorativa"></div>
-                        <div>SOMOS EXPERTOS</div>
-                        <div class="barra-decorativa"></div>
+                <div class="carousel-caption-custom text-center">
+                    <div class="titulo-lineas d-flex align-items-center justify-content-center">
+                        <div class="barra-decorativa me-2"></div>
+                        <div><h5 class="mb-0">SOMOS EXPERTOS</h5></div>
+                        <div class="barra-decorativa ms-2"></div>
                     </div>
-                    <p>
-                        GEODAL es una empresa especializada en ingeniería geotécnica, ofreciendo soluciones avanzadas en
-                        estabilización de taludes, excavaciones, cimentaciones, mejoramiento de suelos y sistemas de contención.
-                    </p>
-                    <button class="btn btn-custom">CONECE MÁS</button>
+                    <p class="mt-3">GEODAL es una empresa especializada en ingeniería geotécnica, ofreciendo soluciones avanzadas en estabilización de taludes, excavaciones, cimentaciones, mejoramiento de suelos y sistemas de contención.</p>
+                    <button class="btn btn-custom mt-2">CONOCE MÁS</button>
                 </div>
             </div>
             <div class="carousel-item">
-                <div class="carousel-caption-custom">
-                    <div class="titulo-lineas">
-                        <div class="barra-decorativa"></div>
-                        <div>CALIDAD Y SEGURIDAD</div>
-                        <div class="barra-decorativa"></div>
+                <div class="carousel-caption-custom text-center">
+                    <div class="titulo-lineas d-flex align-items-center justify-content-center">
+                        <div class="barra-decorativa me-2"></div>
+                        <div><h5 class="mb-0">CALIDAD Y SEGURIDAD</h5></div>
+                        <div class="barra-decorativa ms-2"></div>
                     </div>
-                    <p>Nos comprometemos con estándares rigurosos que garantizan resultados duraderos y seguros para tus proyectos.</p>
-                    <button class="btn btn-custom">VER SERVICIOS</button>
+                    <p class="mt-3">Nos comprometemos con estándares rigurosos que garantizan resultados duraderos y seguros para tus proyectos.</p>
+                    <button class="btn btn-custom mt-2">VER SERVICIOS</button>
                 </div>
             </div>
             <div class="carousel-item">
-                <div class="carousel-caption-custom">
-                    <div class="titulo-lineas">
-                        <div class="barra-decorativa"></div>
-                        <div>SOLUCIONES PERSONALIZADAS</div>
-                        <div class="barra-decorativa"></div>
+                <div class="carousel-caption-custom text-center">
+                    <div class="titulo-lineas d-flex align-items-center justify-content-center">
+                        <div class="barra-decorativa me-2"></div>
+                        <div><h5 class="mb-0">SOLUCIONES PERSONALIZADAS</h5></div>
+                        <div class="barra-decorativa ms-2"></div>
                     </div>
-                    <p>Diseñamos soluciones a medida para cada tipo de terreno, necesidad técnica y presupuesto.</p>
-                    <button class="btn btn-custom">CONTÁCTANOS</button>
+                    <p class="mt-3">Diseñamos soluciones a medida para cada tipo de terreno, necesidad técnica y presupuesto.</p>
+                    <button class="btn btn-custom mt-2">CONOCE MÁS</button>
                 </div>
             </div>
         </div>
+        <!-- Controles de navegación -->
+         <button class="carousel-control-prev" type="button" data-bs-target="#carouselTexto" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Anterior</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselTexto" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Siguiente</span>
+        </button>
     </div>
+
+    <!--Compromisos-->
+    <section class="py-5 text-center bg-light">
+        <div class="container">
+            <h2 class="fw-bold mb-3">NUESTROS <span class="text-primary">COMPROMISOS</span></h2>
+            <p class="text-muted mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat</p>
+            <div class="row g-4">
+                <div class="col-6 col-md-4 col-lg-2 offset-lg-1">
+                    <img src="icono-foco.png" alt="Innovación" class="mb-3 rounded-circle bg-light p-3" style="width: 200px;">
+                    <h6 class="fw-bold">INNOVACIÓN</h6>
+                    <p class="text-muted small">Lorem ipsum dolor sit amet, consectetur sadipscing elit, sed diam nonumy eirmod</p>
+                </div>
+                <div class="col-6 col-md-4 col-lg-2">
+                    <img src="icono-pulgar.png" alt="Calidad" class="mb-3 rounded-circle bg-light p-3" style="width: 200px;">
+                    <h6 class="fw-bold">CALIDAD</h6>
+                    <p class="text-muted small">Lorem ipsum dolor sit amet, consectetur sadipscing elit, sed diam nonumy eirmod</p>
+                </div>
+                <div class="col-6 col-md-4 col-lg-2">
+                    <img src="icono-reloj.png" alt="Experiencia" class="mb-3 rounded-circle bg-light p-3" style="width: 200px;">
+                    <h6 class="fw-bold">EXPERIENCIA</h6>
+                    <p class="text-muted small">Lorem ipsum dolor sit amet, consectetur sadipscing elit, sed diam nonumy eirmod</p>
+                </div>
+                <div class="col-6 col-md-4 col-lg-2">
+                    <img src="icono-personas.png" alt="Clientes satisfechos" class="mb-3 rounded-circle bg-light p-3" style="width: 200px;">
+                    <h6 class="fw-bold">CLIENTES SATISFECHOS</h6>
+                    <p class="text-muted small">Lorem ipsum dolor sit amet, consectetur sadipscing elit, sed diam nonumy eirmod</p>
+                </div>
+                <div class="col-6 col-md-4 col-lg-2">
+                    <img src="icono-chat.png" alt="Soporte" class="mb-3 rounded-circle bg-light p-3" style="width: 200px;">
+                    <h6 class="fw-bold">SOPORTE</h6>
+                    <p class="text-muted small">Lorem ipsum dolor sit amet, consectetur sadipscing elit, sed diam nonumy eirmod</p>
+                </div>
+            </div>
+        </div>
+    </section>
 </body>
 </html>
