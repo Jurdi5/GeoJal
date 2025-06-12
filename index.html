@@ -1,218 +1,947 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GeoJal</title>
-    <link rel="stylesheet" type="text/css" href="Bootstrap.css">
+    <title>GeoJal - Ingeniería Geotécnica</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
-    <link rel="stylesheet" type="text/css" href="P01_index.css">
     <style>
-    .carousel-item {
-        height: 300px;
-        background: linear-gradient(to right, #1e3c72, #2a5298);
-        color: white;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-        padding: 20px;
-    }
+        :root {
+            --primary-color: #1e3c72;
+            --secondary-color: #2a5298;
+            --accent-color: #e74c3c;
+            --light-gray: #f8f9fa;
+        }
 
-    .barra-decorativa {
-      height: 10px;
-      width: 60px;
-      background-color: #e74c3c;
-      margin: 0 10px;
-    }
+        body {
+            font-family: 'Arial', sans-serif;
+        }
 
-    .titulo-lineas {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 2rem;
-      font-weight: bold;
-      margin-bottom: 15px;
-    }
+        /* Navbar Styles */
+        .navbar {
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
 
-    .carousel-caption-custom {
-      max-width: 800px;
-      padding: 2rem;
-      margin: 0 auto;
-      color: white;
-    }
+        .navbar-brand img {
+            transition: transform 0.3s ease;
+        }
 
-    .btn-custom {
-      background-color: white;
-      color: black;
-      font-weight: bold;
-      border: none;
-      padding: 10px 20px;
-      margin-top: 15px;
-    }
+        .navbar-brand img:hover {
+            transform: scale(1.05);
+        }
 
-    .carousel-indicators [data-bs-target] {
-      background-color: white;
-    }
+        /* Carousel Styles */
+        .carousel-item {
+            height: 400px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+        }
 
-    @keyframes fadeInUp {
-        from {
+        .barra-decorativa {
+            height: 4px;
+            width: 60px;
+            background-color: var(--accent-color);
+            margin: 0 15px;
+        }
+
+        .titulo-lineas {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.2rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .carousel-caption-custom {
+            max-width: 900px;
+            padding: 2rem;
+            margin: 0 auto;
+            color: white;
+        }
+
+        .btn-custom {
+            background-color: white;
+            color: var(--primary-color);
+            font-weight: bold;
+            border: none;
+            padding: 12px 30px;
+            margin-top: 20px;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-custom:hover {
+            background-color: var(--accent-color);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .carousel-indicators [data-bs-target] {
+            background-color: white;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .carousel-caption-custom {
             opacity: 0;
             transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
         }
-        to {
+
+        .carousel-item.active .carousel-caption-custom {
+            opacity: 1;
+            transform: translateY(0);
+            animation: fadeInUp 1s ease forwards;
+        }
+
+        /* Section Styles */
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        .section-subtitle {
+            color: #6c757d;
+            margin-bottom: 3rem;
+            font-size: 1.1rem;
+        }
+
+        /* Compromisos Section */
+        .commitment-icon {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background-color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .commitment-icon:hover {
+            transform: translateY(-5px);
+        }
+
+        /* Services Section */
+        .service-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            height: 100%;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border: none;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+
+        .service-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            color: white;
+            font-size: 2rem;
+        }
+
+        /* Portfolio Section */
+        .portfolio-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 15px;
+            height: 250px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .portfolio-item:hover {
+            transform: scale(1.05);
+        }
+
+        .portfolio-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .portfolio-item:hover .portfolio-overlay {
+            opacity: 1;
+        }
+
+        /* Skills Section */
+        .skill-bar {
+            background-color: #e9ecef;
+            border-radius: 10px;
+            height: 20px;
+            overflow: hidden;
+            margin-bottom: 1rem;
+        }
+
+        .skill-progress {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            border-radius: 10px;
+            transition: width 2s ease-in-out;
+        }
+
+        /* Contact Section */
+        .contact-info {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border-radius: 15px;
+            padding: 2rem;
+        }
+
+        .contact-form {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .form-control {
+            border-radius: 10px;
+            border: 2px solid #e9ecef;
+            padding: 12px 15px;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-control:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 0.2rem rgba(30, 60, 114, 0.25);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--primary-color);
+            color: white;
+            padding: 3rem 0 1rem;
+        }
+
+        .social-icons a {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            color: white;
+            text-align: center;
+            line-height: 40px;
+            border-radius: 50%;
+            margin: 0 5px;
+            transition: all 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            background: var(--accent-color);
+            transform: translateY(-3px);
+        }
+
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.show {
             opacity: 1;
             transform: translateY(0);
         }
-    }
 
-    .carousel-caption-custom {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-    }
-
-    .carousel-item.active .carousel-caption-custom {
-      opacity: 1;
-      transform: translateY(0);
-      animation: fadeInUp 1s ease forwards;
-    }
+        /* Responsive */
+        @media (max-width: 768px) {
+            .titulo-lineas {
+                font-size: 1.5rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .commitment-icon {
+                width: 100px;
+                height: 100px;
+            }
+        }
     </style>
 </head>
 <body>
-    <!--Navbar-->
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg bg-white sticky-top">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">
-                <img src="LOGO-GEOJAL.png" alt="Logo GeoJal" height="100px">
+            <a class="navbar-brand" href="#inicio">
+                <img src="LOGO-GEOJAL.png" alt="Logo GeoJal" height="80px">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
+                <ul class="navbar-nav mx-auto">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">NOSOTROS</a>
+                        <a class="nav-link fw-bold px-3" href="#nosotros">NOSOTROS</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">SERVICIOS</a>
+                        <a class="nav-link fw-bold px-3" href="#servicios">SERVICIOS</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">PORTAFOLIO</a>
+                        <a class="nav-link fw-bold px-3" href="#portafolio">PORTAFOLIO</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">HABILIDADES</a>
+                        <a class="nav-link fw-bold px-3" href="#habilidades">HABILIDADES</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">CONTACTANOS</a>
+                        <a class="nav-link fw-bold px-3" href="#contacto">CONTACTANOS</a>
                     </li>
                 </ul>
-            </div>
-            <div class="d-flex">
-                <ul class="navbar-nav">
-                    <li class="nav-item nav-item d-flex align-items-center">
-                        <img src="icono-telefono.png" alt="icono-telefono" height="20px" class="me-2">
-                        <a class="nav-link" href="#">(33)1540 1850</a>
-                    </li>
-                    <li class="nav-item nav-item d-flex align-items-center">
-                        <img src="icono-telefono.png" alt="icono-telefono" height="20px" class="me-2">
-                        <a class="nav-link" href="#">(33)2258 6823</a>
-                    </li>
-                </ul>
+                <div class="d-flex">
+                    <ul class="navbar-nav">
+                        <li class="nav-item d-flex align-items-center">
+                            <img src="icono-telefono.png" alt="icono-telefono" height="20px" class="me-2">
+                            <a class="nav-link fw-bold" href="tel:3315401850">(33)1540 1850</a>
+                        </li>
+                        <li class="nav-item d-flex align-items-center">
+                            <img src="icono-telefono.png" alt="icono-telefono" height="20px" class="me-2">
+                            <a class="nav-link fw-bold" href="tel:3322586823">(33)2258 6823</a>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
     </nav>
-    <!--Carrusel-->
-    <div id="carouselTexto" class="carousel slide" data-bs-ride="carousel">
-        <!-- Indicadores -->
-        <div class="carousel-indicators">
-            <button type="button" data-bs-target="#carouselTexto" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-            <button type="button" data-bs-target="#carouselTexto" data-bs-slide-to="1" aria-label="Slide 2"></button>
-            <button type="button" data-bs-target="#carouselTexto" data-bs-slide-to="2" aria-label="Slide 3"></button>
-        </div>
-        <!-- Slides -->
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <div class="carousel-caption-custom text-center">
-                    <div class="titulo-lineas d-flex align-items-center justify-content-center">
-                        <div class="barra-decorativa me-2"></div>
-                        <div><h5 class="mb-0">SOMOS EXPERTOS</h5></div>
-                        <div class="barra-decorativa ms-2"></div>
-                    </div>
-                    <p class="mt-3">GEODAL es una empresa especializada en ingeniería geotécnica, ofreciendo soluciones avanzadas en estabilización de taludes, excavaciones, cimentaciones, mejoramiento de suelos y sistemas de contención.</p>
-                    <button class="btn btn-custom mt-2">CONOCE MÁS</button>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <div class="carousel-caption-custom text-center">
-                    <div class="titulo-lineas d-flex align-items-center justify-content-center">
-                        <div class="barra-decorativa me-2"></div>
-                        <div><h5 class="mb-0">CALIDAD Y SEGURIDAD</h5></div>
-                        <div class="barra-decorativa ms-2"></div>
-                    </div>
-                    <p class="mt-3">Nos comprometemos con estándares rigurosos que garantizan resultados duraderos y seguros para tus proyectos.</p>
-                    <button class="btn btn-custom mt-2">VER SERVICIOS</button>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <div class="carousel-caption-custom text-center">
-                    <div class="titulo-lineas d-flex align-items-center justify-content-center">
-                        <div class="barra-decorativa me-2"></div>
-                        <div><h5 class="mb-0">SOLUCIONES PERSONALIZADAS</h5></div>
-                        <div class="barra-decorativa ms-2"></div>
-                    </div>
-                    <p class="mt-3">Diseñamos soluciones a medida para cada tipo de terreno, necesidad técnica y presupuesto.</p>
-                    <button class="btn btn-custom mt-2">CONOCE MÁS</button>
-                </div>
-            </div>
-        </div>
-        <!-- Controles de navegación -->
-         <button class="carousel-control-prev" type="button" data-bs-target="#carouselTexto" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Anterior</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselTexto" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Siguiente</span>
-        </button>
-    </div>
 
-    <!--Compromisos-->
-    <section class="py-5 text-center bg-light">
+    <!-- Carrusel de Inicio -->
+    <section id="inicio">
+        <div id="carouselTexto" class="carousel slide" data-bs-ride="carousel" data-bs-interval="5000">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carouselTexto" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselTexto" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#carouselTexto" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            </div>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <div class="carousel-caption-custom text-center">
+                        <div class="titulo-lineas d-flex align-items-center justify-content-center">
+                            <div class="barra-decorativa me-3"></div>
+                            <div><h1 class="mb-0">SOMOS EXPERTOS</h1></div>
+                            <div class="barra-decorativa ms-3"></div>
+                        </div>
+                        <p class="mt-3 fs-5">GEOJAL es una empresa especializada en ingeniería geotécnica, ofreciendo soluciones avanzadas en estabilización de taludes, excavaciones, cimentaciones, mejoramiento de suelos y sistemas de contención.</p>
+                        <button class="btn btn-custom mt-3" onclick="scrollToSection('nosotros')">CONOCE MÁS</button>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="carousel-caption-custom text-center">
+                        <div class="titulo-lineas d-flex align-items-center justify-content-center">
+                            <div class="barra-decorativa me-3"></div>
+                            <div><h1 class="mb-0">CALIDAD Y SEGURIDAD</h1></div>
+                            <div class="barra-decorativa ms-3"></div>
+                        </div>
+                        <p class="mt-3 fs-5">Nos comprometemos con estándares rigurosos que garantizan resultados duraderos y seguros para tus proyectos.</p>
+                        <button class="btn btn-custom mt-3" onclick="scrollToSection('servicios')">VER SERVICIOS</button>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="carousel-caption-custom text-center">
+                        <div class="titulo-lineas d-flex align-items-center justify-content-center">
+                            <div class="barra-decorativa me-3"></div>
+                            <div><h1 class="mb-0">SOLUCIONES PERSONALIZADAS</h1></div>
+                            <div class="barra-decorativa ms-3"></div>
+                        </div>
+                        <p class="mt-3 fs-5">Diseñamos soluciones a medida para cada tipo de terreno, necesidad técnica y presupuesto.</p>
+                        <button class="btn btn-custom mt-3" onclick="scrollToSection('portafolio')">VER PORTAFOLIO</button>
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselTexto" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Anterior</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselTexto" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Siguiente</span>
+            </button>
+        </div>
+    </section>
+
+    <!-- Sección Nosotros / Compromisos -->
+    <section id="nosotros" class="py-5 bg-light">
         <div class="container">
-            <h2 class="fw-bold mb-3">NUESTROS <span class="text-primary">COMPROMISOS</span></h2>
-            <p class="text-muted mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat</p>
+            <div class="text-center mb-5">
+                <h2 class="section-title">NUESTROS <span style="color: var(--accent-color);">COMPROMISOS</span></h2>
+                <p class="section-subtitle">En GEOJAL nos comprometemos con la excelencia en cada proyecto, garantizando soluciones innovadoras y de alta calidad que superen las expectativas de nuestros clientes.</p>
+            </div>
             <div class="row g-4">
                 <div class="col-6 col-md-4 col-lg-2 offset-lg-1">
-                    <img src="icono-foco.png" alt="Innovación" class="mb-3 rounded-circle bg-light p-3" style="width: 200px;">
-                    <h6 class="fw-bold">INNOVACIÓN</h6>
-                    <p class="text-muted small">Lorem ipsum dolor sit amet, consectetur sadipscing elit, sed diam nonumy eirmod</p>
+                    <div class="text-center fade-in">
+                        <div class="commitment-icon">
+                            <img src="icono-foco.png" alt="Innovación" style="width: 60px; height: 60px;">
+                        </div>
+                        <h6 class="fw-bold mb-3">INNOVACIÓN</h6>
+                        <p class="text-muted small">Implementamos las últimas tecnologías y metodologías para ofrecer soluciones vanguardistas en ingeniería geotécnica.</p>
+                    </div>
                 </div>
                 <div class="col-6 col-md-4 col-lg-2">
-                    <img src="icono-pulgar.png" alt="Calidad" class="mb-3 rounded-circle bg-light p-3" style="width: 200px;">
-                    <h6 class="fw-bold">CALIDAD</h6>
-                    <p class="text-muted small">Lorem ipsum dolor sit amet, consectetur sadipscing elit, sed diam nonumy eirmod</p>
+                    <div class="text-center fade-in">
+                        <div class="commitment-icon">
+                            <img src="icono-pulgar.png" alt="Calidad" style="width: 60px; height: 60px;">
+                        </div>
+                        <h6 class="fw-bold mb-3">CALIDAD</h6>
+                        <p class="text-muted small">Mantenemos los más altos estándares de calidad en todos nuestros procesos y entregables.</p>
+                    </div>
                 </div>
                 <div class="col-6 col-md-4 col-lg-2">
-                    <img src="icono-reloj.png" alt="Experiencia" class="mb-3 rounded-circle bg-light p-3" style="width: 200px;">
-                    <h6 class="fw-bold">EXPERIENCIA</h6>
-                    <p class="text-muted small">Lorem ipsum dolor sit amet, consectetur sadipscing elit, sed diam nonumy eirmod</p>
+                    <div class="text-center fade-in">
+                        <div class="commitment-icon">
+                            <img src="icono-reloj.png" alt="Experiencia" style="width: 60px; height: 60px;">
+                        </div>
+                        <h6 class="fw-bold mb-3">EXPERIENCIA</h6>
+                        <p class="text-muted small">Contamos con años de experiencia resolviendo los desafíos más complejos en ingeniería geotécnica.</p>
+                    </div>
                 </div>
                 <div class="col-6 col-md-4 col-lg-2">
-                    <img src="icono-personas.png" alt="Clientes satisfechos" class="mb-3 rounded-circle bg-light p-3" style="width: 200px;">
-                    <h6 class="fw-bold">CLIENTES SATISFECHOS</h6>
-                    <p class="text-muted small">Lorem ipsum dolor sit amet, consectetur sadipscing elit, sed diam nonumy eirmod</p>
+                    <div class="text-center fade-in">
+                        <div class="commitment-icon">
+                            <img src="icono-personas.png" alt="Clientes satisfechos" style="width: 60px; height: 60px;">
+                        </div>
+                        <h6 class="fw-bold mb-3">CLIENTES SATISFECHOS</h6>
+                        <p class="text-muted small">Nuestro enfoque centrado en el cliente nos ha permitido construir relaciones duraderas y exitosas.</p>
+                    </div>
                 </div>
                 <div class="col-6 col-md-4 col-lg-2">
-                    <img src="icono-chat.png" alt="Soporte" class="mb-3 rounded-circle bg-light p-3" style="width: 200px;">
-                    <h6 class="fw-bold">SOPORTE</h6>
-                    <p class="text-muted small">Lorem ipsum dolor sit amet, consectetur sadipscing elit, sed diam nonumy eirmod</p>
+                    <div class="text-center fade-in">
+                        <div class="commitment-icon">
+                            <img src="icono-chat.png" alt="Soporte" style="width: 60px; height: 60px;">
+                        </div>
+                        <h6 class="fw-bold mb-3">SOPORTE</h6>
+                        <p class="text-muted small">Brindamos soporte continuo desde la consulta inicial hasta la finalización del proyecto y más allá.</p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
+
+    <!-- Sección Servicios -->
+    <section id="servicios" class="py-5">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title">NUESTROS <span style="color: var(--accent-color);">SERVICIOS</span></h2>
+                <p class="section-subtitle">Ofrecemos una amplia gama de servicios especializados en ingeniería geotécnica para satisfacer todas las necesidades de tu proyecto.</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-3">
+                    <div class="service-card fade-in">
+                        <div class="service-icon">
+                            <i class="bi bi-shield-check"></i>
+                        </div>
+                        <h5 class="fw-bold text-center mb-3">ELEMENTOS DE CONTENCIÓN</h5>
+                        <p class="text-muted text-center">Diseño e implementación de muros de contención, pantallas y sistemas de retención para estabilización de terrenos.</p>
+                        <div class="text-center">
+                            <button class="btn btn-outline-primary btn-sm">CONOCE MÁS</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="service-card fade-in">
+                        <div class="service-icon">
+                            <i class="bi bi-cpu"></i>
+                        </div>
+                        <h5 class="fw-bold text-center mb-3">MODELACIÓN 3D Y 2D</h5>
+                        <p class="text-muted text-center">Análisis y modelación avanzada para visualización y cálculo de estructuras geotécnicas complejas.</p>
+                        <div class="text-center">
+                            <button class="btn btn-outline-primary btn-sm">CONOCE MÁS</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="service-card fade-in">
+                        <div class="service-icon">
+                            <i class="bi bi-gear-wide-connected"></i>
+                        </div>
+                        <h5 class="fw-bold text-center mb-3">SISTEMAS VARIOS</h5>
+                        <p class="text-muted text-center">Soluciones integrales para diferentes tipos de sistemas geotécnicos adaptados a cada proyecto específico.</p>
+                        <div class="text-center">
+                            <button class="btn btn-outline-primary btn-sm">CONOCE MÁS</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="service-card fade-in">
+                        <div class="service-icon">
+                            <i class="bi bi-building"></i>
+                        </div>
+                        <h5 class="fw-bold text-center mb-3">SISTEMAS DE CIMENTACIÓN</h5>
+                        <p class="text-muted text-center">Diseño y construcción de cimentaciones profundas y superficiales para garantizar la estabilidad estructural.</p>
+                        <div class="text-center">
+                            <button class="btn btn-outline-primary btn-sm">CONOCE MÁS</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row g-4 mt-2">
+                <div class="col-md-6 col-lg-3 offset-lg-3">
+                    <div class="service-card fade-in">
+                        <div class="service-icon">
+                            <i class="bi bi-file-earmark-ruled"></i>
+                        </div>
+                        <h5 class="fw-bold text-center mb-3">PLANOS CONSTRUCTIVOS</h5>
+                        <p class="text-muted text-center">Elaboración de planos técnicos detallados y especificaciones constructivas para la ejecución de proyectos.</p>
+                        <div class="text-center">
+                            <button class="btn btn-outline-primary btn-sm">CONOCE MÁS</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="service-card fade-in">
+                        <div class="service-icon">
+                            <i class="bi bi-tools"></i>
+                        </div>
+                        <h5 class="fw-bold text-center mb-3">MEJORAMIENTO DE SUELOS</h5>
+                        <p class="text-muted text-center">Técnicas especializadas para mejorar las propiedades mecánicas y de estabilidad de los suelos.</p>
+                        <div class="text-center">
+                            <button class="btn btn-outline-primary btn-sm">CONOCE MÁS</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Portafolio -->
+    <section id="portafolio" class="py-5 bg-light">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title">NUESTRO <span style="color: var(--accent-color);">PORTAFOLIO</span></h2>
+                <p class="section-subtitle">Conoce algunos de nuestros proyectos más destacados que demuestran nuestra experiencia y capacidad técnica.</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-4">
+                    <div class="portfolio-item fade-in">
+                        <div class="p-4">
+                            <h5 class="fw-bold">ESTABILIZACIÓN DE TALUDES</h5>
+                            <p class="mb-0">Proyecto de estabilización en zona montañosa</p>
+                        </div>
+                        <div class="portfolio-overlay">
+                            <button class="btn btn-light">Ver Detalles</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="portfolio-item fade-in">
+                        <div class="p-4">
+                            <h5 class="fw-bold">CIMENTACIONES PROFUNDAS</h5>
+                            <p class="mb-0">Edificio comercial de 15 niveles</p>
+                        </div>
+                        <div class="portfolio-overlay">
+                            <button class="btn btn-light">Ver Detalles</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="portfolio-item fade-in">
+                        <div class="p-4">
+                            <h5 class="fw-bold">MUROS DE CONTENCIÓN</h5>
+                            <p class="mb-0">Sistema de contención para desarrollo residencial</p>
+                        </div>
+                        <div class="portfolio-overlay">
+                            <button class="btn btn-light">Ver Detalles</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="portfolio-item fade-in">
+                        <div class="p-4">
+                            <h5 class="fw-bold">MEJORAMIENTO DE SUELOS</h5>
+                            <p class="mb-0">Tratamiento de suelos blandos para infraestructura</p>
+                        </div>
+                        <div class="portfolio-overlay">
+                            <button class="btn btn-light">Ver Detalles</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="portfolio-item fade-in">
+                        <div class="p-4">
+                            <h5 class="fw-bold">EXCAVACIONES PROFUNDAS</h5>
+                            <p class="mb-0">Excavación para estacionamiento subterráneo</p>
+                        </div>
+                        <div class="portfolio-overlay">
+                            <button class="btn btn-light">Ver Detalles</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="portfolio-item fade-in">
+                        <div class="p-4">
+                            <h5 class="fw-bold">ANÁLISIS GEOTÉCNICO</h5>
+                            <p class="mb-0">Estudio completo para complejo industrial</p>
+                        </div>
+                        <div class="portfolio-overlay">
+                            <button class="btn btn-light">Ver Detalles</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Habilidades -->
+    <section id="habilidades" class="py-5">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title">NUESTRAS <span style="color: var(--accent-color);">HABILIDADES</span></h2>
+                <p class="section-subtitle">Contamos con expertise técnico en las principales áreas de la ingeniería geotécnica.</p>
+            </div>
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="fade-in">
+                        <h5 class="fw-bold mb-3">Análisis Geotécnico</h5>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="95%"></div>
+                        </div>
+                        <div class="d-flex justify-content-between mb-4">
+                            <span>Expertos</span>
+                            <span>95%</span>
+                        </div>
+                    </div>
+                    
+                    <div class="fade-in">
+                        <h5 class="fw-bold mb-3">Estabilización de Taludes</h5>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="88%"></div>
+                        </div>
+                        <div class="d-flex justify-content-between mb-4">
+                            <span>Avanzado</span>
+                            <span>88%</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="fade-in">
+                        <h5 class="fw-bold mb-3">Modelación 3D/2D</h5>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="92%"></div>
+                        </div>
+                        <div class="d-flex justify-content-between mb-4">
+                            <span>Expertos</span>
+                            <span>92%</span>
+                        </div>
+                    </div>
+                    
+                    <div class="fade-in">
+                        <h5 class="fw-bold mb-3">Sistemas de Contención</h5>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="87%"></div>
+                        </div>
+                        <div class="d-flex justify-content-between mb-4">
+                            <span>Avanzado</span>
+                            <span>87%</span>
+                        </div>
+                    </div>
+                    
+                    <div class="fade-in">
+                        <h5 class="fw-bold mb-3">Mejoramiento de Suelos</h5>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="85%"></div>
+                        </div>
+                        <div class="d-flex justify-content-between mb-4">
+                            <span>Avanzado</span>
+                            <span>85%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Contacto -->
+    <section id="contacto" class="py-5 bg-light">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title">CONTÁCTANOS</h2>
+                <p class="section-subtitle">Estamos listos para ayudarte con tu próximo proyecto. Contáctanos para una consulta personalizada.</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <div class="contact-info h-100">
+                        <h4 class="fw-bold mb-4">Información de Contacto</h4>
+                        <div class="mb-4">
+                            <h6 class="fw-bold mb-2"><i class="bi bi-geo-alt-fill me-2"></i>Dirección</h6>
+                            <p class="mb-0">Calle Sienita 2049, Col. Mariano Otero<br>C.P. 45067, Zapopan, Jalisco, México</p>
+                        </div>
+                        <div class="mb-4">
+                            <h6 class="fw-bold mb-2"><i class="bi bi-telephone-fill me-2"></i>Teléfonos</h6>
+                            <p class="mb-1">(33) 1540 1850</p>
+                            <p class="mb-0">(33) 2258 6823</p>
+                        </div>
+                        <div class="mb-4">
+                            <h6 class="fw-bold mb-2"><i class="bi bi-envelope-fill me-2"></i>Email</h6>
+                            <p class="mb-0">contacto@geojal.com</p>
+                        </div>
+                        <div class="mb-4">
+                            <h6 class="fw-bold mb-2"><i class="bi bi-clock-fill me-2"></i>Horarios</h6>
+                            <p class="mb-1">Lunes - Viernes: 8:00 AM - 6:00 PM</p>
+                            <p class="mb-0">Sábados: 8:00 AM - 2:00 PM</p>
+                        </div>
+                        <div class="social-icons">
+                            <h6 class="fw-bold mb-3">Síguenos</h6>
+                            <a href="#"><i class="bi bi-facebook"></i></a>
+                            <a href="#"><i class="bi bi-instagram"></i></a>
+                            <a href="#"><i class="bi bi-linkedin"></i></a>
+                            <a href="#"><i class="bi bi-whatsapp"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-8">
+                    <div class="contact-form">
+                        <h4 class="fw-bold mb-4">Envíanos un Mensaje</h4>
+                        <form id="contactForm">
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <label for="nombre" class="form-label fw-bold">Nombre *</label>
+                                    <input type="text" class="form-control" id="nombre" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="empresa" class="form-label fw-bold">Empresa</label>
+                                    <input type="text" class="form-control" id="empresa">
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="telefono" class="form-label fw-bold">Teléfono *</label>
+                                    <input type="tel" class="form-control" id="telefono" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="email" class="form-label fw-bold">Email *</label>
+                                    <input type="email" class="form-control" id="email" required>
+                                </div>
+                                <div class="col-12">
+                                    <label for="servicio" class="form-label fw-bold">Servicio de Interés</label>
+                                    <select class="form-control" id="servicio">
+                                        <option value="">Selecciona un servicio</option>
+                                        <option value="elementos-contencion">Elementos de Contención</option>
+                                        <option value="modelacion-3d-2d">Modelación 3D y 2D</option>
+                                        <option value="sistemas-varios">Sistemas Varios</option>
+                                        <option value="sistemas-cimentacion">Sistemas de Cimentación</option>
+                                        <option value="planos-constructivos">Planos Constructivos</option>
+                                        <option value="mejoramiento-suelos">Mejoramiento de Suelos</option>
+                                        <option value="consultoria">Consultoría General</option>
+                                    </select>
+                                </div>
+                                <div class="col-12">
+                                    <label for="mensaje" class="form-label fw-bold">Mensaje *</label>
+                                    <textarea class="form-control" id="mensaje" rows="5" required placeholder="Describe tu proyecto o consulta..."></textarea>
+                                </div>
+                                <div class="col-12">
+                                    <button type="submit" class="btn btn-primary btn-lg px-5" style="background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); border: none;">
+                                        <i class="bi bi-send-fill me-2"></i>Enviar Mensaje
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <img src="LOGO-GEOJAL.png" alt="Logo GeoJal" height="60px" class="mb-3">
+                    <p class="mb-3">GEOJAL es líder en ingeniería geotécnica, ofreciendo soluciones innovadoras y de alta calidad para proyectos de construcción e infraestructura.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="bi bi-facebook"></i></a>
+                        <a href="#"><i class="bi bi-instagram"></i></a>
+                        <a href="#"><i class="bi bi-linkedin"></i></a>
+                        <a href="#"><i class="bi bi-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2">
+                    <h5 class="fw-bold mb-3">Servicios</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#servicios" class="text-white-50 text-decoration-none">Contención</a></li>
+                        <li class="mb-2"><a href="#servicios" class="text-white-50 text-decoration-none">Modelación 3D</a></li>
+                        <li class="mb-2"><a href="#servicios" class="text-white-50 text-decoration-none">Cimentaciones</a></li>
+                        <li class="mb-2"><a href="#servicios" class="text-white-50 text-decoration-none">Mejoramiento</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2">
+                    <h5 class="fw-bold mb-3">Enlaces</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#nosotros" class="text-white-50 text-decoration-none">Nosotros</a></li>
+                        <li class="mb-2"><a href="#portafolio" class="text-white-50 text-decoration-none">Portafolio</a></li>
+                        <li class="mb-2"><a href="#habilidades" class="text-white-50 text-decoration-none">Habilidades</a></li>
+                        <li class="mb-2"><a href="#contacto" class="text-white-50 text-decoration-none">Contacto</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4">
+                    <h5 class="fw-bold mb-3">Contacto</h5>
+                    <p class="mb-2"><i class="bi bi-geo-alt-fill me-2"></i>Calle Sienita 2049, Col. Mariano Otero</p>
+                    <p class="mb-2">Zapopan, Jalisco, México C.P. 45067</p>
+                    <p class="mb-2"><i class="bi bi-telephone-fill me-2"></i>(33) 1540 1850</p>
+                    <p class="mb-2"><i class="bi bi-telephone-fill me-2"></i>(33) 2258 6823</p>
+                    <p class="mb-0"><i class="bi bi-envelope-fill me-2"></i>contacto@geojal.com</p>
+                </div>
+            </div>
+            <hr class="my-4">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <p class="mb-0">&copy; 2025 GEOJAL. Todos los derechos reservados.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <p class="mb-0">Diseñado con <i class="bi bi-heart-fill text-danger"></i> para la excelencia</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Smooth scrolling para navegación
+        function scrollToSection(sectionId) {
+            document.getElementById(sectionId).scrollIntoView({
+                behavior: 'smooth'
+            });
+        }
+
+        // Actualizar enlaces de navegación para smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Animación de fade-in al hacer scroll
+        function handleScrollAnimations() {
+            const elements = document.querySelectorAll('.fade-in');
+            elements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+                
+                if (elementTop < window.innerHeight - elementVisible) {
+                    element.classList.add('show');
+                }
+            });
+        }
+
+        // Animación de barras de habilidades
+        function animateSkillBars() {
+            const skillBars = document.querySelectorAll('.skill-progress');
+            skillBars.forEach(bar => {
+                const barTop = bar.getBoundingClientRect().top;
+                if (barTop < window.innerHeight - 100) {
+                    const width = bar.getAttribute('data-width');
+                    bar.style.width = width;
+                }
+            });
+        }
+
+        // Event listeners
+        window.addEventListener('scroll', () => {
+            handleScrollAnimations();
+            animateSkillBars();
+        });
+
+        // Ejecutar animaciones al cargar la página
+        document.addEventListener('DOMContentLoaded', () => {
+            handleScrollAnimations();
+            animateSkillBars();
+        });
+
+        // Formulario de contacto
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Aquí puedes agregar la lógica para enviar el formulario
+            // Por ejemplo, usando fetch para enviar a un servidor
+            
+            // Mostrar mensaje de éxito (temporal)
+            alert('¡Mensaje enviado correctamente! Nos pondremos en contacto contigo pronto.');
+            
+            // Limpiar formulario
+            this.reset();
+        });
+
+        // Navbar activo según scroll
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('section[id]');
+            const navItems = document.querySelectorAll('.nav-link');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= sectionTop - 200) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navItems.forEach(item => {
+                item.classList.remove('active');
+                if (item.getAttribute('href') === '#' + current) {
+                    item.classList.add('active');
+                }
+            });
+        });
+
+        // Efecto paralax sutil en el carrusel
+        window.addEventListener('scroll', function() {
+            const scrolled = window.pageYOffset;
+            const carousel = document.querySelector('#carouselTexto');
+            if (carousel && scrolled < carousel.offsetHeight) {
+                carousel.style.transform = 'translateY(' + scrolled * 0.5 + 'px)';
+            }
+        });
+    </script>
 </body>
 </html>
